@@ -1,0 +1,38 @@
+#Switch
+[cohesion, d_c, mu_d, mu_s, s_xx, s_xy, s_xz]: #ConstantMap
+  map:
+    cohesion: -20e6
+    d_c:      '@scalar:const:d_c' # 0.50
+    mu_d:     0.448
+    mu_s:     0.760
+    s_xx:     0
+    s_xy:     0
+    s_xz:     0
+[s_yy, s_zz, s_yz]: #Any
+  components:
+    # Nucleation patch
+    - #AxisAlignedCuboidalDomainFilter
+      limits:
+        x: [354708, 359708]
+        y: [-.inf, .inf]
+        z: [-18250, -17250]
+      components: #AffineMap
+        matrix:
+          z: [0.0, 0.0, -1.0] # abs(z) as z negative
+        translation:
+          z: 0.0
+        components: #PolynomialMap
+          map:
+            s_yy: [ -1683.37903500698456942859, -17320500] # (-17320500D0)+(-641.032721921598D0) * abs(average)/0.380801179408141D0
+            s_zz: '@tensor_comp:inside_patch:s_zz' # [-17691.56095721476382131004,  17320500] # (17320500D0)+(-6736.967278078402D0) * abs(average)/0.380801179408141D0
+            s_yz: [ 15807.29089105365004249231, -10000000] # (-10000000D0)+(6019.435014560794D0) * abs(average)/0.380801179408141D0
+    - #AffineMap
+      matrix:
+        z: [0.0, 0.0, -1.0] # abs(z) as z negative
+      translation:
+        z: 0.0
+      components: #PolynomialMap
+        map:
+          s_yy: [-6311.37851566530906470183, 0] # -2403.380382456552D0 * abs(average)/0.380801179408141D0
+          s_zz: [-7811.47690289915043927382, 0] # -2974.619617543449D0 * abs(average)/0.380801179408141D0 
+          s_yz: '@tensor_comp:outside_patch:s_yz' #[ 8586.87548147454673220825, 0] # 3269.892310776356D0 * abs(average)/0.380801179408141D0

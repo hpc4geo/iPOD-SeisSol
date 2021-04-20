@@ -1,0 +1,4 @@
+# template_F.yaml (modified from F.yaml)
+myForwardModel_F: 
+  - a: '@scalar:parameter_a'   # 33.3 (reference / default value)
+  - b: '@scalar:parameter_b'   # 66.6 (reference / default value)
