@@ -132,9 +132,9 @@ def test_2():
   pod.setup_basis()
   pod.setup_interpolant(rbf_type='polyh', bounds_auto=True)
 
-  print('Singular values:', pod.singular_values)
+  print('Singular values:\n', pod.singular_values)
   e = pod.get_ric()
-  print('RIC:', e)
+  print('Relative Information Content (RIC):\n', e)
 
   # LOOCV measures
   measure = podtools.rbf_loocv(pod, norm_type="linf")
@@ -143,7 +143,8 @@ def test_2():
   ordering = np.argsort(measure)
   print('m[smallest][Linf] =',('%1.4e' % measure[ordering[0]]))
   print('m[largest ][Linf] =',('%1.4e' % measure[ordering[-1]]))
-
+  print('measure:\n', measure)
+  print('snapshot index min/max:', ordering[0], ordering[-1])
 
   measure = podtools.rbf_loocv(pod, norm_type="rms")
   measure = np.absolute(measure)
@@ -151,6 +152,8 @@ def test_2():
   ordering = np.argsort(measure)
   print('m[smallest][rms] =',('%1.4e' % measure[ordering[0]]))
   print('m[largest ][rms] =',('%1.4e' % measure[ordering[-1]]))
+  print('measure:\n', measure)
+  print('snapshot index min/max:', ordering[0], ordering[-1])
 
 
   # Evaluate the POD model at an arbitrary instant in time
