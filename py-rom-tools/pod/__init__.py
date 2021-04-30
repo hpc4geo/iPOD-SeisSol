@@ -4,7 +4,6 @@ from .pod_loocv          import pod_loocv, pod_loocv2
 
 
 from .rbf_affine        import RBFAffine
-from .irbf              import RBF
 
 from .pod_multivariate  import PODMultivariate
 
