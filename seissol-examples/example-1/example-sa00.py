@@ -154,9 +154,15 @@ def test_2():
 
 
   # Evaluate the POD model at an arbitrary instant in time
-  x0 = pod.evaluate([110.0])
+  x0 = pod.evaluate([220.0])
   #print(x0)
 
+  # Push POD data into a new H5 file
+  h5f = h5py.File("pod_surface_cell.h5", "w")
+  grp = h5f.create_group("mesh0/")
+  #dset = h5f.create_dataset("mydataset", (100,), dtype='i')
+  dset = grp.create_dataset('pod', data=x0)
+  h5f.close()
 
 
 if __name__ == '__main__':
