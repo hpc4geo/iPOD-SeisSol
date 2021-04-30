@@ -1,0 +1,7 @@
+directory,output-file,time
+data/mun-GME,mun-GME.xdmf,100.0
+data/mun-GME,mun-GME.xdmf,125.0
+data/mun-GME,mun-GME.xdmf,250.0
+data/mun-GME,mun-GME.xdmf,400.0
+data/mun-GME,mun-GME.xdmf,500.0
+data/mun-GME,mun-GME.xdmf,750.0
