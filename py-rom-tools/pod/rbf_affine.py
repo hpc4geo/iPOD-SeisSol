@@ -258,11 +258,7 @@ class RBFAffine:
   # -----------------------------------------------------------------------------------
   def action_A_inverse(self, rhs):
     u, s, vh = self.U, self.S, self.Vh
-    x = np.zeros(self.npoints+1)
-    for i in range(0,len(s)):
-      fac = np.dot(u[:,i],rhs) / s[i]
-      x = x + fac * vh[i,:]
-    return x
+    return (u.T @ rhs / s) @ vh
         
 
 
