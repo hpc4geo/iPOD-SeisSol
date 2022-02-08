@@ -258,7 +258,7 @@ class RBFAffine:
   # -----------------------------------------------------------------------------------
   def action_A_inverse(self, rhs):
     u, s, vh = self.U, self.S, self.Vh
-    return (u.T @ rhs / s) @ vh
+    return vh.T @ (u.T @ rhs / s)
         
 
 
